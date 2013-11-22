@@ -9,5 +9,9 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require ../others/plugins/pace/pace-theme-flash.css
+ *= require ../others/plugins/bootstrap/css/bootstrap.min.css
+ *= require ../others/plugins/bootstrap/css/bootstrap-responsive.min.css
+ *= require ../others/plugins/font-awesome/css/font-awesome.css
  *= require_tree .
  */
