@@ -11,7 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131122080141) do
+ActiveRecord::Schema.define(:version => 20131122202605) do
+
+  create_table "currencies", :force => true do |t|
+    t.decimal  "last",           :precision => 20, :scale => 5
+    t.decimal  "average",        :precision => 20, :scale => 5
+    t.decimal  "volume",         :precision => 20, :scale => 5
+    t.decimal  "volume_current", :precision => 20, :scale => 5
+    t.decimal  "high",           :precision => 20, :scale => 5
+    t.decimal  "low",            :precision => 20, :scale => 5
+    t.string   "pair",                                          :null => false
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
+    t.decimal  "buy",            :precision => 20, :scale => 5
+    t.decimal  "sell",           :precision => 20, :scale => 5
+  end
+
+  create_table "exchanges", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -34,5 +53,15 @@ ActiveRecord::Schema.define(:version => 20131122080141) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["username"], :name => "index_users_on_username", :unique => true
+
+  create_table "wallets", :force => true do |t|
+    t.decimal  "btc_balacne", :precision => 20, :scale => 5
+    t.decimal  "ltc_balance", :precision => 20, :scale => 5
+    t.decimal  "nmc_balance", :precision => 20, :scale => 5
+    t.decimal  "usd_balance", :precision => 20, :scale => 5
+    t.integer  "user_id"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+  end
 
 end

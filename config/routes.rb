@@ -14,6 +14,9 @@ CryptoTrader::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
+  get 'exchange'       => 'exchange#index'
+  get 'exchange/:pair' => 'exchange#update'
+
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action

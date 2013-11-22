@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  btc_balacne: MyString
+  ltc_balance: MyString
+  nmc_balance: MyString
+  usd_balance: MyString
+
+two:
+  btc_balacne: MyString
+  ltc_balance: MyString
+  nmc_balance: MyString
+  usd_balance: MyString
