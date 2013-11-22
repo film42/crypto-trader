@@ -17,6 +17,8 @@ CryptoTrader::Application.routes.draw do
   get 'exchange'       => 'exchange#index'
   get 'exchange/:pair' => 'exchange#update'
 
+  get 'dashboard'       => 'dashboard#index'
+
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
