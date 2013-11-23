@@ -97,6 +97,49 @@ $(document).ready ->
   buy_selector.change updateNewTransaction
   using_selector.change updateNewTransaction
 
+  ###############################################
+  #   MARKET CHART                              #
+  ###############################################
+
+  start = 0
+  btc_history = [{x: 0, y: 10}]
+  ltc_history = [{x: 0, y: 10}]
+  nmc_history = [{x: 0, y: 10}]
+
+  logScale = d3.scale.log().domain([200, 900])
+  series = [
+      data: nmc_history
+      color: 'rgba(0,144,217,0.51)'
+      name:'Name Coin'
+    ,
+      data: ltc_history
+      color: '#eceff1'
+      name:'Lite Coin'
+    ,
+      data: btc_history
+      color: '#6f7b8a'
+      name:'Bit Coin'
+      scale: logScale
+    ]
+
+  graph = new Rickshaw.Graph
+    element: document.querySelector("#chart"),
+    height: 200,
+    renderer: 'area',
+    series: series
+
+
+  graph.render()
+  hoverDetail = new Rickshaw.Graph.HoverDetail graph: graph
+
+  updateCharts = () ->
+    btc_history.push x: start, y: btc_last_usd
+    ltc_history.push x: start, y: ltc_last_usd
+    nmc_history.push x: start, y: nmc_last_usd
+
+    start++
+    graph.configure series : series 
+    graph.update()
 
   ###############################################
   #   NETWORKING                                #
@@ -138,10 +181,14 @@ $(document).ready ->
     nmc_last_usd = parseFloat(data.nmc_usd.last) 
 
     updateExchangeStats(data)
+    updateCharts()
 
 
   # Get the latest every second
   setInterval () => 
     $.getJSON '/exchange', updateExchangeValues
   , 5000
+
+
+
 
