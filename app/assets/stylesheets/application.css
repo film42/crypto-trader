@@ -28,3 +28,11 @@
 .page-sidebar {
   position: absolute !important;
 }
+
+.balance-frame {
+  font-size: 14px;
+  margin-left: 10px;
+}
+.balance-total {
+  font-size: 14px;
+}

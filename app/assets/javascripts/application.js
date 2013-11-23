@@ -41,6 +41,7 @@
 //= require ../others/plugins/jquery-flot/jquery.flot.min.js
 //= require ../others/plugins/jquery-flot/jquery.flot.animator.min.js
 //= require ../others/plugins/skycons/skycons.js
+//= require ../others/plugins/moment/moment.min.js
 
 //= require arch/dashboard.js
 //= require arch/core.js

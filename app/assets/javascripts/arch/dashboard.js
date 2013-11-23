@@ -10,7 +10,7 @@ $(document).ready(function() {
 		alwaysVisible: false
 	});
 	//loadServerChart();
-	loadSampleChart();
+	//loadSampleChart();
 	
 function loadSampleChart(){
 var seriesData = [ [], [],[]];

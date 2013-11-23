@@ -109,7 +109,7 @@
                         <div class="heading">Wallet</div>  
                       </div>
                       <div class="tile-footer">
-                        <span>Total: </span><strong>$<span class="balance-total"><%=  number_with_precision current_user.wallet.balance, precision: 2 %></span></strong>
+                        <span class="balance-frame">Total: </span><strong>$<span class="balance-total"><%=  number_with_precision current_user.wallet.balance, precision: 2 %></span></strong>
                       </div>
                     </div>
                     <div class="tiles-body  wallet-list" >
@@ -120,7 +120,7 @@
                             <div class="description">Balance</div>
                           </div>
                           <div class="details-status pull-right">
-                            <strong><span class="animate-number balance-usd" data-value="<%= current_user.wallet.usd_balance %>" data-animation-duration="200">0</span></strong>
+                            <strong><span class="animate-number balance-usd" data-value="<%= number_with_precision current_user.wallet.usd_balance, precision: 2 %>" data-animation-duration="200">0</span></strong>
                           </div>
                           <div class="clearfix"></div>
                           <br><br>
@@ -131,7 +131,7 @@
                             <div class="description">Balance</div>
                           </div>
                           <div class="details-status pull-right">
-                            <strong><span class="animate-number balance-btc" data-value="<%= current_user.wallet.btc_balance %>" data-animation-duration="200">0</span></strong>
+                            <strong><span class="animate-number balance-btc" data-value="<%= number_with_precision current_user.wallet.btc_balance, precision: 2%>" data-animation-duration="200">0</span></strong>
                           </div>
                           <div class="clearfix"></div>
                           <br><br>
@@ -142,7 +142,7 @@
                           <div class="description">Balance</div>
                         </div>
                         <div class="details-status pull-right">
-                          <strong><span class="animate-number balance-ltc" data-value="<%= current_user.wallet.ltc_balance %>" data-animation-duration="200">0</span></strong>
+                          <strong><span class="animate-number balance-ltc" data-value="<%= number_with_precision current_user.wallet.ltc_balance, precision: 2 %>" data-animation-duration="200">0</span></strong>
                         </div>
                         <div class="clearfix"></div>
                         <br><br>
@@ -153,7 +153,7 @@
                           <div class="description">Balance</div>
                         </div>
                         <div class="details-status pull-right">
-                          <strong><span class="animate-number balance-nmc" data-value="<%= current_user.wallet.nmc_balance %>" data-animation-duration="200">0</span></strong>
+                          <strong><span class="animate-number balance-nmc" data-value="<%= number_with_precision current_user.wallet.nmc_balance, precision: 2 %>" data-animation-duration="200">0</span></strong>
                         </div>
                         <br><br>
                         <div class="clearfix"></div>
@@ -170,67 +170,55 @@
 
                         <div>&nbsp;</div>
 
-                        <div class="control-group">
-                          <label class="control-label span3">Buy</label>
-                          <select id="source" class="input-medium span8 buy-selector">
-                            <option value="">Choose</option>
-                            <option value="USD">US Dollar</option>
-                            <option value="BTC" selected="selected">BitCoin (Default)</option>
-                            <option value="LTC">LiteCoin</option>
-                            <option value="NMC">NameCoin</option>
-                          </select>
-                        </div>
+                        <%= form_for @transaction, url: {action: "new_transaction"}, html: {class: "nifty_form"} do |f| %>
 
-                        <div class="control-group">
-                          <label class="control-label span3">using</label>
-                          <select id="Select1" class="input-medium span8 using-selector">
-                            <option value="">Choose</option>
-                            <option value="USD" selected="selected">US Dollar (Default)</option>
-                            <option value="BTC">BitCoin</option>
-                            <option value="LTC">LiteCoin</option>
-                            <option value="NMC">NameCoin</option>
-                          </select>
-                        </div>
-
-                        <div class="control-group">
-                          <label class="control-label span3">Amount</label>
-                          <div class="controls">
-                            <input type="text" class="input-medium span8 transaction-amount">
+                          <div class="control-group">
+                            <label class="control-label span3">Buy</label>
+                            <%= f.select :buy_currency_code, options_for_select(@buy_select_options), {}, class: 'input-medium span8 buy-selector' %>
                           </div>
-                        </div>
 
-                        <div class="control-group" style="margin-top: 12px;">
-                          <label class="control-label span3">Subtotal</label>
-                          <div class="controls">
-                            <h4><span class="transaction-subtotal">0.00000</span></h4>
+                          <div class="control-group">
+                            <label class="control-label span3"></label>
+                            <div class="controls">
+                              <%= f.text_field :buy_amount , {class: "input-medium span8 transaction-amount", placeholder: "ex 0.00000"} %>
+                            </div>
                           </div>
-                        </div>
 
-                        <div class="control-group fee-group hidden" style="margin-top: 23px;">
-                          <label class="control-label span3">Fee</label>
-                          <div class="controls">
-                            <h4>0.06% or <span class="transaction-charge">0.00000</span></h4>
+                          <div class="control-group">
+                            <label class="control-label span3">Using</label>
+                            <%= f.select :using_currency_code, options_for_select(@using_select_options), {}, class: 'input-medium span8 using-selector' %>
                           </div>
-                        </div>
-                        
-                        <div id="order-total" class="control-group" style="margin-top: 23px;">
-                          <label class="control-label span3"><strong>Total</strong></label>
-                          <div class="controls">
-                            <h4><strong></strong><strong class="transaction-total">0.00000</strong></h4>
-                          </div>
-                        </div>
 
-    
-                        <div id="place-order" class="control-group" style="margin-top: 23px;">
-                          <button type="button" class="btn btn-dark btn-cons">
-                            <i class="icon-ok"></i>
-                            Place Order
-                          </button>
-                          <button type="button" class="btn btn-default btn-cons">
-                            <i class="icon-remove"></i>
-                            Cancel
-                          </button>
-                        </div>
+
+                          <div class="control-group" style="margin-top: 12px;">
+                            <label class="control-label span3">Subtotal</label>
+                            <div class="controls">
+                              <h4><span class="transaction-subtotal">0.00000</span></h4>
+                            </div>
+                          </div>
+
+                          <div class="control-group fee-group" style="margin-top: 23px;">
+                            <label class="control-label span3">Fee</label>
+                            <div class="controls">
+                              <h4>0.06% is <span class="transaction-charge">0.00000</span></h4>
+                            </div>
+                          </div>
+                          
+                          <div id="order-total" class="control-group" style="margin-top: 23px;">
+                            <label class="control-label span3"><strong>Total</strong></label>
+                            <div class="controls">
+                              <h4><strong></strong><strong class="transaction-total">0.00000</strong></h4>
+                            </div>
+                          </div>
+
+                          <div id="place-order" class="control-group" style="margin-top: 23px;">
+                            <button type="submit" class="btn btn-dark btn-cons">
+                              <i class="icon-ok"></i>
+                              Place Order
+                            </button>
+                          </div>
+
+                        <% end %>
                       </div>    
                     </div>
                     <!--TRADE END-->       
@@ -240,76 +228,51 @@
             </div>
           </div>
         </div>        
+
         <div class="row-fluid spacing-bottom">
-          <div class="span12 tiles grey ">
+          <div class="span12 tiles white ">
             <div class="no-margin-grid">
-              <div class="row-fluid"> 
-               <div class="tiles white span8">                                    
-                <div class="tiles-body">                  
-                 <div class="no-margin-grid">
-                   <div class="row-fluid">
-                    <div class="span6">
-                      <div class="mini-chart-wrapper">
-                        <div class="chart-details-wrapper">
-                          <div class="chartname">
-                            New Orders
-                          </div>
-                          <div class="chart-value">
-                            17,555
-                          </div>                          
-                        </div>
-                        <div class="mini-chart">
-                          <div id="mini-chart-orders"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="span6">
-                      <div class="mini-chart-wrapper">
-                        <div class="chart-details-wrapper">
-                          <div class="chartname">
-                            My Balance
-                          </div>
-                          <div class="chart-value">
-                            $17,555
-                          </div>                          
-                        </div>
-                        <div class="mini-chart">
-                          <div id="mini-chart-other" ></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>  
-                </div>  
+              <div class="row-fluid">
+              <div class="tiles-body ">
+                <h4>Transaction History</h4> 
+              </div>
+              <table class="table no-more-tables">
+                <thead>
+                  <tr>
+                    <th >Bought</th>
+                    <th >Sold</th>
+                    <th >USD Value</th>
+                    <th >Balance</th>
+                    <th >Date</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <% @transactions.each do |t| %>
+                  <tr>
+                    <td><%= t.buy_currency_code.upcase %>&nbsp;<strong><%= number_with_precision t.buy_amount, precision: 3 %></strong></td>
+                    <td><%= t.using_currency_code.upcase %>&nbsp;<strong><%= number_with_precision t.total, precision: 3  %></strong></td>
+                    <td>USD&nbsp;<strong><%= number_with_precision t.total_usd, precision: 3  %></strong></td>
+                    <td>USD&nbsp;<strong><%= number_with_precision t.new_balance, precision: 3  %></strong></td>
+                    <td class="moment-date" date="<%= t.created_at %>"><%= t.created_at %></td>
+                  </tr>
+                <% end %>
+                <% if @transactions.size == 0 %>
+                  <tr>
+                    <td><p>No Transactions</p></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
 
-              </div>  
-              <br>
-              <div id="ricksaw" style="display:none;"></div>                 
-
-              <div class="clearfix"></div>  
-            </div> 
-            <div class="span4">
-              <div class="tiles grey ">
-                <div class="tiles white no-margin">
-                 <div class="tiles-body">
-                  <div class="tiles-title blend">
-                    OVERALL VIEWS   
-                  </div>
-                  <div class="heading">
-                    <span data-animation-duration="1000" data-value="432852" class="animate-number">0</span>  
-                  </div>  
-                  44% higher <span class="blend">than last month</span> 
-                </div>
-              </div>            
-              <div id="legend"  style="display:none;"></div>
-              
-
-            </div> 
-          </div>               
+          </div>
         </div>
       </div>
     </div>
-  </div>
+
+
+
 </div>
+
 
 
 <div class="span4 currency-snapshot">  

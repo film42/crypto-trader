@@ -18,6 +18,7 @@ CryptoTrader::Application.routes.draw do
   get 'exchange/:pair' => 'exchange#update'
 
   get 'dashboard'       => 'dashboard#index'
+  post 'dashboard'       => 'dashboard#new_transaction'
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

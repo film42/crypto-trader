@@ -79,18 +79,12 @@ $(document).ready ->
     exchange_rate = buy_rate / using_rate
     subtotal = amount * exchange_rate
     fee = 0.006 * subtotal
-
-    if buy_rate is 1 or using_rate is 1
-      $('.fee-group').removeClass 'hidden'
-    else 
-      $('.fee-group').addClass 'hidden'
-      fee = 0 # reset to none
-
+  
     total = subtotal - fee
 
-    transaction_subtotal.text(subtotal.toFixed(5))
-    transaction_fee.text(fee.toFixed(5))
-    transaction_total.text(total.toFixed(5))
+    transaction_subtotal.text(subtotal.toFixed(5) + " " + using_selector.val())
+    transaction_fee.text(fee.toFixed(5)  + " " + using_selector.val())
+    transaction_total.text(total.toFixed(5)  + " " + using_selector.val())
 
 
   transaction_amount.keyup updateNewTransaction
@@ -191,5 +185,10 @@ $(document).ready ->
   , 5000
 
 
-
+  ###############################################
+  #   DATES                                     #
+  ###############################################
+  $('.moment-date').each (i, v) ->
+    el = $(v)
+    el.text(moment(el.attr('date')).format('lll'))
 
