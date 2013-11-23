@@ -8,7 +8,7 @@ class Wallet < ActiveRecord::Base
     ltc_last = Currency.where(pair: "ltc_usd").first.last
     nmc_last = Currency.where(pair: "nmc_usd").first.last
 
-    (btc_last * btc_balance) + (ltc_last * ltc_balance) + (nmc_last * nmc_balance)
+    (btc_last * btc_balance) + (ltc_last * ltc_balance) + (nmc_last * nmc_balance) + usd_balance
   end
 
 end

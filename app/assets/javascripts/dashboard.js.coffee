@@ -149,7 +149,8 @@ $(document).ready ->
     # Wallet
     balance = (btc_last_usd * btc_balance) + 
                 (ltc_last_usd * ltc_balance) + 
-                  (nmc_last_usd * nmc_balance)
+                  (nmc_last_usd * nmc_balance) +
+                    usd_balance
 
     balance_el.text balance.toFixed(2) unless balance == NaN
 

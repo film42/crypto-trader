@@ -26,4 +26,17 @@ class User < ActiveRecord::Base
   def email_to_md5
     Digest::MD5.hexdigest(email)
   end
+
+
+  after_create do |user|
+    wallet = Wallet.new
+    wallet.ltc_balance = 0
+    wallet.btc_balance = 0
+    wallet.nmc_balance = 0
+    wallet.usd_balance = 1000
+    user.wallet = wallet
+
+    wallet.save
+    user.save
+  end
 end
