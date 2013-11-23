@@ -18,7 +18,11 @@ CryptoTrader::Application.routes.draw do
   get 'exchange/:pair' => 'exchange#update'
 
   get 'dashboard'       => 'dashboard#index'
-  post 'dashboard'       => 'dashboard#new_transaction'
+  get 'dashboard/leaderboard/'       => 'dashboard#leaderboard'
+  post 'dashboard'      => 'dashboard#new_transaction'
+
+  get '/'               => 'home#index'
+  get 'about'           => 'home#about'
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

@@ -20,6 +20,24 @@ class DashboardController < ApplicationController
 
   end
 
+  def leaderboard
+
+    @btc_currency = Currency.where(pair: "btc_usd").first
+    @ltc_currency = Currency.where(pair: "ltc_usd").first
+    @nmc_currency = Currency.where(pair: "nmc_usd").first
+
+    @transactions  = current_user.transactions.limit(15).reverse_order
+
+    @buy_select_options   = [ ['BitCoin (Default)', 'BTC'],  ['US Dollar', 'USD'],
+                              ['LiteCoin', 'LTC'], ['NameCoin', 'NMC'] ]
+
+    @using_select_options = [ ['US Dollar (Default)', 'USD'],  ['BitCoin', 'BTC'],
+                              ['LiteCoin', 'LTC'], ['NameCoin', 'NMC'] ]
+
+    @transaction = Transaction.new
+
+  end
+
   def new_transaction 
 
       #attr_accessible :, :buy_rate_usd, :

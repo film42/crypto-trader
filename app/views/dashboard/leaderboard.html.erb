@@ -1,0 +1,310 @@
+<!-- BEGIN HEADER -->
+<div class="header navbar navbar-inverse "> 
+  <!-- BEGIN TOP NAVIGATION BAR -->
+  <div class="navbar-inner">
+    <div class="header-seperation"> 
+      <ul class="nav pull-left notifcation-center" id="main-menu-toggle-wrapper" style="display:none">  
+       <li class="dropdown"> <a id="main-menu-toggle" href="#main-menu"  class="" > <div class="iconset top-menu-toggle-white"></div> </a> </li>     
+     </ul>
+     <!-- BEGIN LOGO --> 
+     <a href="/dashboard"><img src="/assets/logo-crypto.png" class="logo"/></a>
+     <!-- END LOGO --> 
+    </div>
+    <!-- END RESPONSIVE MENU TOGGLER --> 
+    <div class="header-quick-nav" > 
+      <!-- BEGIN TOP NAVIGATION MENU -->
+      <div class="pull-left"> 
+        <ul class="nav quick-section">
+          <li class="quicklinks"> <a href="/dashboard" class="" ><div class="iconset top-reload"></div> </a> </li> 
+        </ul>
+      </div>
+      <!-- END TOP NAVIGATION MENU -->
+      <!-- BEGIN CHAT TOGGLER -->
+      <div class="pull-right"> 
+        <div class="chat-toggler">  
+          <div class="user-details"> 
+            <div class="username">
+              <%= current_user.first_name %>&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>            
+          </div> 
+        </a>            
+        <div class="profile-pic"> 
+          <img alt="" src="http://www.gravatar.com/avatar/<%=  current_user.email_to_md5  %>?s=35" /> 
+        </div>            
+      </div>
+      <ul class="nav quick-section ">
+        <li class="quicklinks"> <span class="h-seperate"></span></li> 
+        <li class="quicklinks"> 
+          <%= link_to content_tag(:i, "", :class => "icon-off"), destroy_user_session_path %>
+        </li> 
+      </ul>
+ </div>
+ <!-- END CHAT TOGGLER -->
+</div> 
+<!-- END TOP NAVIGATION MENU --> 
+
+</div>
+<!-- END TOP NAVIGATION BAR --> 
+</div>
+</div>
+<!-- END HEADER --> 
+<!-- BEGIN CONTAINER -->
+<div class="page-container row-fluid"> 
+  <!-- BEGIN SIDEBAR -->
+  <div class="page-sidebar user-sidebar" id="main-menu"> 
+    <!-- BEGIN MINI-PROFILE -->
+    <div class="user-info-wrapper">  
+      <div class="profile-wrapper">
+        <img src="http://www.gravatar.com/avatar/<%=  current_user.email_to_md5  %>?s=69" />
+      </div>
+      <div class="user-info">
+        <div class="greeting">Welcome</div>
+        <div class="username"><%= current_user.first_name %></div>
+        <div class="status">Status<a href="#"><div class="status-icon green"></div>Online</a></div>
+      </div>
+    </div>
+    <!-- END MINI-PROFILE -->
+
+    <!-- BEGIN MINI-WIGETS -->
+
+    <!-- END MINI-WIGETS -->
+
+    <!-- BEGIN SIDEBAR MENU -->  
+    <p class="menu-title"><!-- FILLER --></p>
+    <ul>  
+      <li class=""> <a href="/dashboard"> <i class="icon-custom-home"></i> <span class="title">Dashboard</span> <span class="selected"></span>  <span class="arrow "></span></a> </li>
+
+      <li class="start active "> <a href="/dashboard/leaderboard"> <i class="icon-group"></i> <span class="title">Leader Board</span> <span class="selected"></span>  <span class="arrow "></span></a> </li>
+      
+      <li class=""> <a href="/about"> <i class="icon-custom-feedbacks"></i> <span class="title">About</span> <span class="arrow "></span> </a> </li>    
+      
+    </ul>
+    <div class="clearfix"></div>
+    <!-- END SIDEBAR MENU --> 
+  </div>
+    <!-- END SIDEBAR --> 
+      <!-- BEGIN PAGE CONTAINER-->
+  <div class="page-content">
+    <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+      <div id="portlet-config" class="modal hide">
+        <div class="modal-header">
+          <button data-dismiss="modal" class="close" type="button"></button>
+           <h3>Widget Settings</h3>
+
+        </div>
+        <div class="modal-body">Widget settings form goes here</div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="content">
+        <!--<ul class="breadcrumb">
+          <li>
+            <p>YOU ARE HERE
+              </p>
+          </li> <i class="icon-angle-right"></i> 
+          <li><a href="#" class="active">Tables</a>
+
+          </li>
+        </ul>-->
+        <div class="page-title">  
+            <br><br><br>
+            <h3>Leader Board</h3>  
+        </div>
+        <div class="row-fluid">
+          <div class="span12">
+            <div class="grid simple ">
+              <div class="grid-title no-border">
+                <h4>Top <span class="semi-bold">Traders</span></h4>
+    
+              </div>
+              <div class="grid-body no-border">
+                <div class="row-fluid">
+
+                  <div class="control-group">
+                    <select id="source">
+                      <option value="M" selected="selected">Monthly</option>
+                      <option value="W">Weekly</option>
+                      <option value="D">Daily</option>
+                    </select>
+                  </div>
+
+                  <table class="table no-more-tables table-bordered">
+                    <thead>
+                      <tr>
+                        <th width="1%">
+                          <div class="checkbox check-default">
+                            <input id="checkbox10" type="checkbox" value="1" class="checkall">
+                            <label for="checkbox10"></label>
+                          </div>
+                        </th>
+                        <th width="15%">Username</th>
+                        <th width="22%">Favorite Currency</th>
+                        <th width="6%">Gain / Loss</th>
+                        <th width="3%"></th>
+                        <th width="10%">Progress</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td valign="middle">
+                           <div class="checkbox check-default">
+                            <input id="checkbox11" type="checkbox" value="1">
+                            <label for="checkbox11"></label>
+                          </div>
+                        </td>
+                        <td valign="middle">pbeezy &nbsp;<span class="label label-success">No. 1</span></td>
+                        <td valign="middle"><span class="muted">Bitcoin</span>
+                        </td>
+                        <td><span class="muted">$284.07</span>
+                        </td>
+                        <td>23%</td>
+                        <td valign="middle">
+                          <div class="progress progress-success">
+                            <div data-percentage="100%" id="" class="bar animate-progress-bar"></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="checkbox check-default">
+                            <input id="checkbox12" type="checkbox" value="1">
+                            <label for="checkbox12"></label>
+                          </div>
+                        </td>
+                        <td>film42 &nbsp;<span class="label label-info">Top Gainer</span>
+                        </td>
+                        <td><span class="muted">Bitcoin</span>
+                        </td>
+                        <td><span class="muted">$172.35</span>
+                        </td>
+                        <td style="color: #0090D9;">26%</td>
+
+                        <td>
+                          <div class="progress progress-success">
+                            <div data-percentage="90%" class="bar animate-progress-bar"></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="checkbox check-default">
+                            <input id="checkbox13" type="checkbox" value="1">
+                            <label for="checkbox13"></label>
+                          </div>
+                        </td>
+                        <td>SushiGuy</td>
+                        <td valign="middle"><span class="muted">Lightcoin</span>
+                        </td>
+                        <td><span class="muted">$52.49</span>
+                        </td>
+                        <td>15%</td>
+                        <td>
+                          <div class="progress progress-success">
+                            <div data-percentage="60%" class="bar animate-progress-bar"></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="checkbox check-default">
+                            <input id="checkbox14" type="checkbox" value="1">
+                            <label for="checkbox14"></label>
+                          </div>
+                        </td>
+                        <td>BillGates3</td>
+                        <td valign="middle"><span class="muted">Lightcoin</span></td>
+                        <td><span class="muted">$43.10</span></td>
+                        <td>12%</td>
+                        <td>
+                          <div class="progress progress-success">
+                            <div data-percentage="30%" class="bar animate-progress-bar"></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="checkbox check-default">
+                            <input id="checkbox15" type="checkbox" value="1">
+                            <label for="checkbox15"></label>
+                          </div>
+                        </td>
+                        <td>mark29</td>
+                        <td valign="middle"><span class="muted">Bitcoin</span></td>
+                        <td><span class="muted">$16.98</span></td>
+                        <td>4%</td>
+                        <td>
+                          <div class="progress progress-warning">
+                            <div data-percentage="15%" class="bar animate-progress-bar"></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="checkbox check-default">
+                            <input id="checkbox16" type="checkbox" value="1">
+                            <label for="checkbox16"></label>
+                          </div>
+                        </td>
+                        <td>Termitrader</td>
+                        <td valign="middle"><span class="muted">Bitcoin</span></td>
+                        <td><span class="muted">$12.35</span></td>
+                        <td>1%</td>
+                        <td>
+                          <div class="progress progress-warning">
+                            <div data-percentage="15%" class="bar animate-progress-bar"></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="checkbox check-default">
+                            <input id="checkbox18" type="checkbox" value="1">
+                            <label for="checkbox18"></label>
+                          </div>
+                        </td>
+                        <td>i_the_best</td>
+                        <td valign="middle"><span class="muted">Bitcoin</span></td>
+                        <td><span class="muted">-$68.80</span></td>
+                        <td style="color: #f35958;">-19%</td>
+                        <td>
+                          <div class="progress progress-danger">
+                            <div data-percentage="45%" class="bar animate-progress-bar"></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="checkbox check-default">
+                            <input id="checkbox17" type="checkbox" value="1">
+                            <label for="checkbox17"></label>
+                          </div>
+                        </td>
+                        <td>_alexlawrence &nbsp;<span class="label label-important">:(</span></td>
+                        <td valign="middle"><span class="muted">Bitcoin</span></td>
+                        <td><span class="muted">-$207.54</span></td>
+                        <td style="color: #f35958;">-38%</td>
+                        <td>
+                          <div class="progress progress-danger">
+                            <div data-percentage="75%" class="bar animate-progress-bar"></div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- END PAGE -->
+    </div>
+ </div>
+
+    
+    
+      
+
+
+  
+<!-- END HEADER -->

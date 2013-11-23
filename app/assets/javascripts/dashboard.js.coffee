@@ -192,3 +192,26 @@ $(document).ready ->
     el = $(v)
     el.text(moment(el.attr('date')).format('lll'))
 
+
+  updateServer = () ->
+    console.log "Caching....."
+    setTimeout =>
+      $.ajax '/exchange/btc_usd'
+    , 1000
+
+    setTimeout =>
+      $.ajax '/exchange/ltc_usd'
+    , 2000
+
+    setTimeout =>
+      $.ajax '/exchange/nmc_usd'
+    , 3000
+  
+  blank = () ->
+
+  #updateServer()
+  setInterval ->
+    #updateServer()
+    blank()
+  , 10000
+
