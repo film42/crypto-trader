@@ -9,44 +9,9 @@ $(document).ready(function() {
 		height: '150px',
 		alwaysVisible: false
 	});
-	loadServerChart();
+	//loadServerChart();
 	loadSampleChart();
 	
-function loadServerChart(){
-	var seriesData = [ [], []];
-	var random = new Rickshaw.Fixtures.RandomData(50);
-
-	for (var i = 0; i < 50; i++) {
-		random.addData(seriesData);
-	}
-
-	graph = new Rickshaw.Graph( {
-		element: document.querySelector("#chart"),
-		height: 200,
-		renderer: 'area',
-		series: [
-			{
-				data: seriesData[0],
-				color: 'rgba(0,144,217,0.51)',
-				name:'DB Server'
-			},{
-				data: seriesData[1],
-				color: '#eceff1',
-				name:'Web Server'
-			}
-		]
-	} );
-	var hoverDetail = new Rickshaw.Graph.HoverDetail( {
-		graph: graph
-	});
-
-	setInterval( function() {
-		random.removeData(seriesData);
-		random.addData(seriesData);
-		graph.update();
-
-	},1000);
-}
 function loadSampleChart(){
 var seriesData = [ [], [],[]];
 	var random = new Rickshaw.Fixtures.RandomData(50);

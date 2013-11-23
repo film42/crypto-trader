@@ -13,5 +13,18 @@
  *= require ../others/plugins/bootstrap/css/bootstrap.min.css
  *= require ../others/plugins/bootstrap/css/bootstrap-responsive.min.css
  *= require ../others/plugins/font-awesome/css/font-awesome.css
+ *= require_tree ../others/plugins/jquery-ricksaw-chart/css
  *= require_tree .
  */
+
+.tile-more-content .wallet-list {
+  border-right:  1px solid #eee;
+}
+
+.currency-snapshot {
+  opacity: 0.8;
+}
+
+.page-sidebar {
+  position: absolute !important;
+}

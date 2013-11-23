@@ -1,0 +1,400 @@
+<!-- BEGIN HEADER -->
+<div class="header navbar navbar-inverse "> 
+  <!-- BEGIN TOP NAVIGATION BAR -->
+  <div class="navbar-inner">
+    <div class="header-seperation"> 
+      <ul class="nav pull-left notifcation-center" id="main-menu-toggle-wrapper" style="display:none">  
+       <li class="dropdown"> <a id="main-menu-toggle" href="#main-menu"  class="" > <div class="iconset top-menu-toggle-white"></div> </a> </li>     
+     </ul>
+     <!-- BEGIN LOGO --> 
+     <a href="/dashboard"><img src="/assets/logo-crypto.png" class="logo"/></a>
+     <!-- END LOGO --> 
+    </div>
+    <!-- END RESPONSIVE MENU TOGGLER --> 
+    <div class="header-quick-nav" > 
+      <!-- BEGIN TOP NAVIGATION MENU -->
+      <div class="pull-left"> 
+        <ul class="nav quick-section">
+          <li class="quicklinks"> <a href="/dashboard" class="" ><div class="iconset top-reload"></div> </a> </li> 
+        </ul>
+      </div>
+      <!-- END TOP NAVIGATION MENU -->
+      <!-- BEGIN CHAT TOGGLER -->
+      <div class="pull-right"> 
+        <div class="chat-toggler">  
+          <div class="user-details"> 
+            <div class="username">
+              <%= current_user.first_name %>&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>            
+          </div> 
+        </a>            
+        <div class="profile-pic"> 
+          <img alt="" src="http://www.gravatar.com/avatar/<%=  current_user.email_to_md5  %>?s=35" /> 
+        </div>            
+      </div>
+      <ul class="nav quick-section ">
+        <li class="quicklinks"> <span class="h-seperate"></span></li> 
+        <li class="quicklinks"> 
+          <%= link_to content_tag(:i, "", :class => "icon-off"), destroy_user_session_path %>
+        </li> 
+      </ul>
+ </div>
+ <!-- END CHAT TOGGLER -->
+</div> 
+<!-- END TOP NAVIGATION MENU --> 
+
+</div>
+<!-- END TOP NAVIGATION BAR --> 
+</div>
+</div>
+<!-- END HEADER --> 
+<!-- BEGIN CONTAINER -->
+<div class="page-container row-fluid"> 
+  <!-- BEGIN SIDEBAR -->
+  <div class="page-sidebar user-sidebar" id="main-menu"> 
+    <!-- BEGIN MINI-PROFILE -->
+    <div class="user-info-wrapper">  
+      <div class="profile-wrapper">
+        <img src="http://www.gravatar.com/avatar/<%=  current_user.email_to_md5  %>?s=69" />
+      </div>
+      <div class="user-info">
+        <div class="greeting">Welcome</div>
+        <div class="username"><%= current_user.first_name %></div>
+        <div class="status">Status<a href="#"><div class="status-icon green"></div>Online</a></div>
+      </div>
+    </div>
+    <!-- END MINI-PROFILE -->
+
+    <!-- BEGIN MINI-WIGETS -->
+
+    <!-- END MINI-WIGETS -->
+
+    <!-- BEGIN SIDEBAR MENU -->  
+    <p class="menu-title"><!-- FILLER --></p>
+    <ul>  
+      <li class="start active "> <a href="index.html"> <i class="icon-custom-home"></i> <span class="title">Dashboard</span> <span class="selected"></span>  <span class="arrow "></span></a> </li>
+      
+      <li class=""> <a href="/about"> <i class="icon-custom-feedbacks"></i> <span class="title">About</span> <span class="arrow "></span> </a> </li>    
+      
+    </ul>
+    <div class="clearfix"></div>
+    <!-- END SIDEBAR MENU --> 
+  </div>
+    <!-- END SIDEBAR --> 
+    <!-- BEGIN PAGE CONTAINER-->
+    <div class="page-content"> 
+      <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+      <div id="portlet-config" class="modal hide">
+        <div class="modal-header">
+          <button data-dismiss="modal" class="close" type="button"></button>
+          <h3>Widget Settings</h3>
+        </div>
+        <div class="modal-body"> Widget settings form goes here </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="content">  
+        <div class="page-title">  
+          <h3>Dashboard </h3>   
+        </div>
+        <div id="container">
+        <div class="row-fluid spacing-bottom">    
+          <div class="span8">
+            <div class="row-fluid spacing-bottom">
+              <div class="span12 tiles white ">
+                <div class="no-margin-grid">
+                  <div class="row-fluid"> 
+                    <div class="tile-more-content span4">
+                      <div class="tiles green">
+                       <div class="tiles-body">
+                        <div class="heading">Wallet</div>  
+                      </div>
+                      <div class="tile-footer">
+                        <span>Total: </span><strong>$<span class="balance-total"><%=  number_with_precision current_user.wallet.balance, precision: 2 %></span></strong>
+                      </div>
+                    </div>
+                    <div class="tiles-body  wallet-list" >
+                      <ul class="progress-list" >
+                        <li>
+                          <div class="details-wrapper">
+                            <div class="name">US Dollar</div>
+                            <div class="description">Balance</div>
+                          </div>
+                          <div class="details-status pull-right">
+                            <strong><span class="animate-number balance-usd" data-value="<%= current_user.wallet.usd_balance %>" data-animation-duration="200">0</span></strong>
+                          </div>
+                          <div class="clearfix"></div>
+                          <br><br>
+                        </li>
+                        <li>
+                          <div class="details-wrapper">
+                            <div class="name">BitCoin</div>
+                            <div class="description">Balance</div>
+                          </div>
+                          <div class="details-status pull-right">
+                            <strong><span class="animate-number balance-btc" data-value="<%= current_user.wallet.btc_balance %>" data-animation-duration="200">0</span></strong>
+                          </div>
+                          <div class="clearfix"></div>
+                          <br><br>
+                        </li>
+                      <li>
+                        <div class="details-wrapper">
+                          <div class="name">LiteCoin</div>
+                          <div class="description">Balance</div>
+                        </div>
+                        <div class="details-status pull-right">
+                          <strong><span class="animate-number balance-ltc" data-value="<%= current_user.wallet.ltc_balance %>" data-animation-duration="200">0</span></strong>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br><br>
+                      </li>        
+                      <li>
+                        <div class="details-wrapper">
+                          <div class="name">NameCoin</div>
+                          <div class="description">Balance</div>
+                        </div>
+                        <div class="details-status pull-right">
+                          <strong><span class="animate-number balance-nmc" data-value="<%= current_user.wallet.nmc_balance %>" data-animation-duration="200">0</span></strong>
+                        </div>
+                        <br><br>
+                        <div class="clearfix"></div>
+                      </li>        
+                    </ul>
+
+                  </div>
+                </div>
+                <div class="tiles white span8">
+                  <!--TRADE-->
+                    <div class="tiles white"> 
+                      <div class="tiles-body white">                  
+                        <div class="heading">New Trade</div>
+
+                        <div>&nbsp;</div>
+
+                        <div class="control-group">
+                          <label class="control-label span3">Buy</label>
+                          <select id="source" class="input-medium span8 buy-selector">
+                            <option value="">Choose</option>
+                            <option value="USD">US Dollar</option>
+                            <option value="BTC" selected="selected">BitCoin (Default)</option>
+                            <option value="LTC">LiteCoin</option>
+                            <option value="NMC">NameCoin</option>
+                          </select>
+                        </div>
+
+                        <div class="control-group">
+                          <label class="control-label span3">using</label>
+                          <select id="Select1" class="input-medium span8 using-selector">
+                            <option value="">Choose</option>
+                            <option value="USD" selected="selected">US Dollar (Default)</option>
+                            <option value="BTC">BitCoin</option>
+                            <option value="LTC">LiteCoin</option>
+                            <option value="NMC">NameCoin</option>
+                          </select>
+                        </div>
+
+                        <div class="control-group">
+                          <label class="control-label span3">Amount</label>
+                          <div class="controls">
+                            <input type="text" class="input-medium span8 transaction-amount">
+                          </div>
+                        </div>
+
+                        <div class="control-group" style="margin-top: 12px;">
+                          <label class="control-label span3">Subtotal</label>
+                          <div class="controls">
+                            <h4><span class="transaction-subtotal">0.00000</span></h4>
+                          </div>
+                        </div>
+
+                        <div class="control-group fee-group hidden" style="margin-top: 23px;">
+                          <label class="control-label span3">Fee</label>
+                          <div class="controls">
+                            <h4>0.06% or <span class="transaction-charge">0.00000</span></h4>
+                          </div>
+                        </div>
+                        
+                        <div id="order-total" class="control-group" style="margin-top: 23px;">
+                          <label class="control-label span3"><strong>Total</strong></label>
+                          <div class="controls">
+                            <h4><strong></strong><strong class="transaction-total">0.00000</strong></h4>
+                          </div>
+                        </div>
+
+    
+                        <div id="place-order" class="control-group" style="margin-top: 23px;">
+                          <button type="button" class="btn btn-dark btn-cons">
+                            <i class="icon-ok"></i>
+                            Place Order
+                          </button>
+                          <button type="button" class="btn btn-default btn-cons">
+                            <i class="icon-remove"></i>
+                            Cancel
+                          </button>
+                        </div>
+                      </div>    
+                    </div>
+                    <!--TRADE END-->       
+                  <div class="clearfix"></div>  
+                </div>   
+              </div>
+            </div>
+          </div>
+        </div>        
+        <div class="row-fluid spacing-bottom">
+          <div class="span12 tiles grey ">
+            <div class="no-margin-grid">
+              <div class="row-fluid"> 
+               <div class="tiles white span8">                                    
+                <div class="tiles-body">                  
+                 <div class="no-margin-grid">
+                   <div class="row-fluid">
+                    <div class="span6">
+                      <div class="mini-chart-wrapper">
+                        <div class="chart-details-wrapper">
+                          <div class="chartname">
+                            New Orders
+                          </div>
+                          <div class="chart-value">
+                            17,555
+                          </div>                          
+                        </div>
+                        <div class="mini-chart">
+                          <div id="mini-chart-orders"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="span6">
+                      <div class="mini-chart-wrapper">
+                        <div class="chart-details-wrapper">
+                          <div class="chartname">
+                            My Balance
+                          </div>
+                          <div class="chart-value">
+                            $17,555
+                          </div>                          
+                        </div>
+                        <div class="mini-chart">
+                          <div id="mini-chart-other" ></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>  
+                </div>  
+
+              </div>  
+              <br>
+              <div id="ricksaw" style="display:none;"></div>                 
+
+              <div class="clearfix"></div>  
+            </div> 
+            <div class="span4">
+              <div class="tiles grey ">
+                <div class="tiles white no-margin">
+                 <div class="tiles-body">
+                  <div class="tiles-title blend">
+                    OVERALL VIEWS   
+                  </div>
+                  <div class="heading">
+                    <span data-animation-duration="1000" data-value="432852" class="animate-number">0</span>  
+                  </div>  
+                  44% higher <span class="blend">than last month</span> 
+                </div>
+              </div>            
+              <div id="legend"  style="display:none;"></div>
+              
+
+            </div> 
+          </div>               
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="span4 currency-snapshot">  
+  <div class="tiles blue added-margin">
+    <div class="tiles-body">
+      <div class="controller">                
+        <a href="javascript:;" class="reload"></a> 
+      </div>    
+      <div class="tiles-title">
+        CURRENT BITCOIN PRICE
+      </div>  
+      <div class="heading">
+        $<span class="animate-number btc-last" data-value="<%= number_with_precision @btc_currency.last, precision: 2 %>" data-animation-duration="1200">0</span>
+      </div>     
+      <div class="description">
+        H: <strong>$</strong><strong class="btc-high"><%= number_with_precision @btc_currency.high, precision: 2 %></strong> &nbsp;&nbsp;&nbsp; 
+        L: <strong>$</strong><strong class="btc-low"><%= number_with_precision @btc_currency.low, precision: 2 %></strong>  &nbsp;&nbsp;&nbsp; 
+        AVG: <strong>$</strong><strong class="btc-average"><%= number_with_precision @btc_currency.average, precision: 2 %></strong></div>
+    </div>  
+  </div>
+</div>
+
+<div class="span4 currency-snapshot">
+    <div class="tiles green added-margin">
+     <div class="tiles-body">
+      <div class="controller">                
+        <a href="javascript:;" class="reload"></a>               
+      </div>    
+      <div class="tiles-title">
+        CURRENT LITECOIN PRICE
+      </div>  
+      <div class="heading">
+        $<span class="animate-number ltc-last" data-value="<%= number_with_precision @ltc_currency.last, precision: 2 %>" data-animation-duration="1000">0</span> 
+      </div>   
+      <div class="description">
+        HIGH: <strong>$</strong><strong class="ltc-high"><%= number_with_precision @ltc_currency.high, precision: 2 %></strong> &nbsp;&nbsp;&nbsp; 
+        LOW: <strong>$</strong><strong class="ltc-low"><%= number_with_precision @ltc_currency.low, precision: 2 %></strong>  &nbsp;&nbsp;&nbsp; 
+        AVG: <strong>$</strong><strong class="ltc-average"><%= number_with_precision @ltc_currency.average, precision: 2 %></strong></div>
+    </div>
+  </div>
+</div>
+
+<div class="span4 currency-snapshot spacing-bottom">
+  <div class="tiles red added-margin">
+    <div class="tiles-body">
+      <div class="controller">                
+        <a href="javascript:;" class="reload"></a>                 
+      </div>  
+      <div class="tiles-title">
+        CURRENT NAMECOIN PRICE
+      </div>  
+      <div class="heading">
+        $<span class="animate-number nmc-last" data-value="<%= number_with_precision @nmc_currency.last, precision: 2 %>" data-animation-duration="1200">0</span> 
+      </div>
+      <div class="description">
+        HIGH: <strong>$</strong><strong class="nmc-high"><%= number_with_precision @nmc_currency.high, precision: 2 %></strong> &nbsp;&nbsp;&nbsp; 
+        LOW: <strong>$</strong><strong class="nmc-low"><%= number_with_precision @nmc_currency.low, precision: 2 %></strong>  &nbsp;&nbsp;&nbsp; 
+        AVG: <strong>$</strong><strong class="nmc-average"><%= number_with_precision @nmc_currency.average, precision: 2 %></strong></div>
+    </div>
+  </div>
+</div> 
+
+<div class="span4">
+  <div class="row-fluid spacing-bottom ">
+    <div class="span12">        
+      <div class="tiles white added-margin">
+        <div class="tiles-body">
+          <div class="controller">                
+            <a href="javascript:;" class="reload"></a>                
+          </div>
+          <div class="tiles-title">LIVE CHART</div>  
+        </div>
+      </div>
+      <div class="tiles white added-margin">
+        <div id="chart">                
+        </div>
+      </div>
+    </div> 
+  </div>
+</div>    
+
+
+</div>
+</div> 
+</div>  
+<!-- END PAGE --> 
+</div>
+<!-- END HEADER -->

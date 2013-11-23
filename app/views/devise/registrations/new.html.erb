@@ -1,27 +1,94 @@
-<h2>Sign up</h2>
+<div class="container">
+  <div class="row">
+    <div class="login-container span12">
+      <div class="row-fluid column-seperation" style="padding:0 10px">
+        <div class="span6 offset1">
+          <h2>Sign Up to Crypto Trader</h2>
+          <p>We promise it'll be amazing!</p>
+          <br>
+        </div>
+        <div class="span5"> <br>
+          <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+            <%= devise_error_messages! %>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
-
-  <div><%= f.label :username %><br />
-  <%= f.text_field :username %></div>
-
-  <div><%= f.label :first_name %><br />
-  <%= f.text_field :first_name %></div>
-
-  <div><%= f.label :last_name %><br />
-  <%= f.text_field :last_name %></div>
-
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+            <div class="row-fluid">
+              <div class="control-group span10">
+                <label class="control-label">Email</label>
+                <div class="controls">
+                  <div class="input-with-icon  right">                                       
+                  <i class=""></i>
+                  <%= f.email_field :email, :autofocus => true %></div>                              
+                </div>
+              </div>
+            </div>
+            <div class="row-fluid">
+              <div class="control-group span10">
+                <label class="control-label">Username</label>
+                <span class="help"></span>
+                <div class="controls">
+                  <div class="input-with-icon  right">                                       
+                    <i class=""></i>
+                    <%= f.text_field :username %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row-fluid">
+              <div class="control-group span10">
+                <label class="control-label">First Name</label>
+                <span class="help"></span>
+                <div class="controls">
+                  <div class="input-with-icon  right">                                       
+                    <i class=""></i>
+                    <%= f.text_field :first_name %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row-fluid">
+              <div class="control-group span10">
+                <label class="control-label">Last Name</label>
+                <span class="help"></span>
+                <div class="controls">
+                  <div class="input-with-icon  right">                                       
+                    <i class=""></i>
+                    <%= f.text_field :last_name %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row-fluid">
+              <div class="control-group span10">
+                <label class="control-label">Password</label>
+                <span class="help"></span>
+                <div class="controls">
+                  <div class="input-with-icon  right">                                       
+                    <i class=""></i>
+                    <%= f.password_field :password %>                                 
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row-fluid">
+              <div class="control-group span10">
+                <label class="control-label">Confirm Password</label>
+                <span class="help"></span>
+                <div class="controls">
+                  <div class="input-with-icon  right">                                       
+                    <i class=""></i>
+                    <%= f.password_field :password_confirmation %>                                 
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row-fluid">
+              <div class="span10">
+                <button class="btn btn-primary btn-cons pull-left" type="submit">Sign Up</button>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
