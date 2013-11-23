@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131122202605) do
+ActiveRecord::Schema.define(:version => 20131123033025) do
 
   create_table "currencies", :force => true do |t|
     t.decimal  "last",           :precision => 20, :scale => 5
@@ -55,13 +55,13 @@ ActiveRecord::Schema.define(:version => 20131122202605) do
   add_index "users", ["username"], :name => "index_users_on_username", :unique => true
 
   create_table "wallets", :force => true do |t|
-    t.decimal  "btc_balacne", :precision => 20, :scale => 5
     t.decimal  "ltc_balance", :precision => 20, :scale => 5
-    t.decimal  "nmc_balance", :precision => 20, :scale => 5
     t.decimal  "usd_balance", :precision => 20, :scale => 5
     t.integer  "user_id"
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
+    t.decimal  "nmc_balance", :precision => 20, :scale => 5
+    t.decimal  "btc_balance", :precision => 20, :scale => 5
   end
 
 end

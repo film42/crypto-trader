@@ -4,6 +4,10 @@ class DashboardController < ApplicationController
 
   def index 
 
+    @btc_currency = Currency.where(pair: "btc_usd").first
+    @ltc_currency = Currency.where(pair: "ltc_usd").first
+    @nmc_currency = Currency.where(pair: "nmc_usd").first
+
   end
 
 

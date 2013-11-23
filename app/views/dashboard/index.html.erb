@@ -15,107 +15,29 @@
       <!-- BEGIN TOP NAVIGATION MENU -->
       <div class="pull-left"> 
         <ul class="nav quick-section">
-          <li class="quicklinks"> <a href="#" class="" id="layout-condensed-toggle" ><div class="iconset top-menu-toggle-dark"></div> </a> </li>        
-        </ul>
-        <ul class="nav quick-section">
-          <li class="quicklinks"> <a href="#" class="" ><div class="iconset top-reload"></div> </a> </li> 
-          <li class="quicklinks"> <span class="h-seperate"></span></li>
-          <li class="quicklinks"> <a href="#" class="" ><div class="iconset top-tiles"></div></a> </li>
-          <div class="input-prepend inside search-form no-boarder">
-            <span class="add-on"> <a href="#" class="" ><div class="iconset top-search"></div></a></span>
-            <input name="" type="text"  class="no-boarder " placeholder="Search Dashboard" style="width:250px;">
-          </div>
+          <li class="quicklinks"> <a href="/dashboard" class="" ><div class="iconset top-reload"></div> </a> </li> 
         </ul>
       </div>
       <!-- END TOP NAVIGATION MENU -->
       <!-- BEGIN CHAT TOGGLER -->
       <div class="pull-right"> 
         <div class="chat-toggler">  
-          <a href="#" class="dropdown-toggle" id="my-task-list" data-placement="bottom" 
-          data-content='
-          <div style="width:300px" class="scroller" data-height="100px">
-            <div class="notification-messages info">
-              <div class="user-profile">
-                <img src="/assets/profiles/d.jpg" data-src="/assets/profiles/d.jpg" data-src-retina="/assets/profiles/d2x.jpg" width="35" height="35">
-              </div>
-              <div class="message-wrapper">
-                <div class="heading">
-                  David Nester - Commented on your wall
-                </div>
-                <div class="description">
-                  Meeting postponed to tomorrow
-                </div>
-                <div class="date pull-left">
-                  A min ago
-                </div>                    
-              </div>
-              <div class="clearfix"></div>                  
-            </div>  
-            <div class="notification-messages danger">
-              <div class="iconholder">
-                <i class="icon-warning-sign"></i>
-              </div>
-              <div class="message-wrapper">
-                <div class="heading">
-                  Server load limited
-                </div>
-                <div class="description">
-                  Database server has reached its daily capicity
-                </div>
-                <div class="date pull-left">
-                  2 mins ago
-                </div>
-              </div>
-              <div class="clearfix"></div>
-            </div>  
-            <div class="notification-messages success">
-              <div class="user-profile">
-                <img src="/assets/profiles/h.jpg" data-src="/assets/profiles/h.jpg" data-src-retina="/assets/profiles/h2x.jpg" width="35" height="35">
-              </div>
-              <div class="message-wrapper">
-                <div class="heading">
-                  You haveve got 150 messages
-                </div>
-                <div class="description">
-                  150 newly unread messages in your inbox
-                </div>
-                <div class="date pull-left">
-                  An hour ago
-                </div>                  
-              </div>
-              <div class="clearfix"></div>
-            </div>              
-          </div>' data-toggle="dropdown" data-original-title="Notifications">
           <div class="user-details"> 
             <div class="username">
-              <span class="badge badge-important">3</span> 
-              John <span class="bold">Smith</span>                  
+              <%= current_user.first_name %>&nbsp;&nbsp;&nbsp;&nbsp;
             </div>            
           </div> 
-          <div class="iconset top-down-arrow"></div>
         </a>            
         <div class="profile-pic"> 
-          <img alt="" src="/assets/profiles/avatar_small.jpg" data-src="/assets/profiles/avatar_small.jpg" data-src-retina="/assets/profiles/avatar_small2x.jpg" width="35" height="35" /> 
+          <img alt="" src="http://www.gravatar.com/avatar/<%=  current_user.email_to_md5  %>?s=35" /> 
         </div>            
       </div>
       <ul class="nav quick-section ">
+        <li class="quicklinks"> <span class="h-seperate"></span></li> 
         <li class="quicklinks"> 
           <%= link_to content_tag(:i, "", :class => "icon-off"), destroy_user_session_path %>
         </li> 
-        <li class="quicklinks"> <span class="h-seperate"></span></li> 
-        <li class="quicklinks">   
-          <a id="chat-menu-toggle" href="#sidr" class="chat-menu-toggle" ><div class="iconset top-chat-dark "><span class="badge badge-important hide" id="chat-message-count">1</span></div>
-          </a> 
-          <div class="simple-chat-popup chat-menu-toggle hide" >
-            <div class="simple-chat-popup-arrow"></div><div class="simple-chat-popup-inner">
-            <div style="width:100px">
-             <div class="semi-bold">David Nester</div>
-             <div class="message">Hey you there </div>
-           </div>
-         </div>
-       </div>
-     </li> 
-   </ul>
+      </ul>
  </div>
  <!-- END CHAT TOGGLER -->
 </div> 
@@ -129,15 +51,15 @@
 <!-- BEGIN CONTAINER -->
 <div class="page-container row-fluid"> 
   <!-- BEGIN SIDEBAR -->
-  <div class="page-sidebar" id="main-menu"> 
+  <div class="page-sidebar user-sidebar" id="main-menu"> 
     <!-- BEGIN MINI-PROFILE -->
     <div class="user-info-wrapper">  
       <div class="profile-wrapper">
-        <img src="/assets/profiles/avatar.jpg" data-src="/assets/profiles/avatar.jpg" data-src-retina="/assets/profiles/avatar2x.jpg" width="69" height="69" />
+        <img src="http://www.gravatar.com/avatar/<%=  current_user.email_to_md5  %>?s=69" />
       </div>
       <div class="user-info">
         <div class="greeting">Welcome</div>
-        <div class="username">John <span class="semi-bold">Smith</span></div>
+        <div class="username"><%= current_user.first_name %></div>
         <div class="status">Status<a href="#"><div class="status-icon green"></div>Online</a></div>
       </div>
     </div>
@@ -148,124 +70,16 @@
     <!-- END MINI-WIGETS -->
 
     <!-- BEGIN SIDEBAR MENU -->  
-    <p class="menu-title">BROWSE <span class="pull-right"><a href="javascript:;"><i class="icon-refresh"></i></a></span></p>
+    <p class="menu-title"><!-- FILLER --></p>
     <ul>  
-      <li class="start active "> <a href="index.html"> <i class="icon-custom-home"></i> <span class="title">Dashboard</span> <span class="selected"></span> <span class="badge badge-important pull-right">5</span></a> </li>
-      <li class=""> <a href="email.html"> <i class="icon-envelope"></i> <span class="title">Email</span>  <span class=" badge badge-disable pull-right ">203</span></a> </li>      
-      <li class=""> <a href="javascript:;"> <i class="icon-custom-ui"></i> <span class="title">UI Elements</span> <span class="arrow "></span> </a>
-        <ul class="sub-menu">
-          <li > <a href="typography.html"> Typography </a> </li>
-          <li > <a href="messages_notifications.html"> Messages & Notifications </a> </li>
-          <li > <a href="icons.html">Icons</a> </li>
-          <li > <a href="buttons.html">Buttons</a> </li>    
-          <li > <a href="tabs_accordian.html"> Tabs & Accordions </a> </li>
-          <li > <a href="sliders.html">Sliders</a> </li>
-          <li > <a href="group_list.html">Group list </a> </li>
-        </ul>
-      </li>
-      <li class=""> <a href="javascript:;"> <i class="icon-custom-form"></i> <span class="title">Forms</span> <span class="arrow "></span> </a>
-        <ul class="sub-menu">
-          <li > <a href="form_elements.html">Form Elements </a> </li>
-          <li > <a href="form_validations.html">Form Validations</a> </li>
-        </ul>
-      </li>
-      <li class=""> <a href="javascript:;"> <i class="icon-custom-portlets"></i> <span class="title">Grids</span> <span class="arrow "></span> </a>
-        <ul class="sub-menu">
-          <li > <a href="grids_simple.html">Simple Grids</a> </li>
-          <li > <a href="grids_draggable.html">Draggable Grids </a> </li>
-        </ul>
-      </li>
-      <li class=""> <a href="javascript:;"> <i class="icon-custom-thumb"></i> <span class="title">Tables</span> <span class="arrow "></span> </a>
-        <ul class="sub-menu">
-          <li > <a href="tables.html"> Basic Tables </a> </li>
-          <li > <a href="datatables.html"> Data Tables </a> </li>
-        </ul>
-      </li>
-      <li class=""> <a href="javascript:;"> <i class="icon-custom-map"></i> <span class="title">Maps</span> <span class="arrow "></span> </a>
-        <ul class="sub-menu">
-          <li > <a href="google_map.html"> Google Maps </a> </li>
-          <li > <a href="vector_map.html"> Vector Maps </a> </li>
-        </ul>
-      </li>
-      <li class=""> <a href="charts.html"> <i class="icon-custom-chart"></i> <span class="title">Charts</span> </a> </li>    
-      <li class=""> <a href="javascript:;"> <i class="icon-custom-extra"></i> <span class="title">Extra</span> <span class="arrow "></span> </a>
-        <ul class="sub-menu">
-          <li > <a href="user-profile.html"> User Profile </a> </li>
-          <li > <a href="gallery.html"> Gallery</a> </li>
-          <li class=""><a href="calender.html"> Calendar</a> </li>
-          <li > <a href="search_results.html"> Search Results </a> </li>
-          <li > <a href="invoice.html"> Invoice </a> </li>
-          <li > <a href="404.html"> 404 Page </a> </li>
-          <li > <a href="500.html"> 500 Page </a> </li>
-          <li > <a href="blank_template.html"> Blank Page </a> </li>
-          <li > <a href="login.html"> Login </a> </li>
-          <li > <a href="lockscreen.html"> Lockscreen </a> </li>
-        </ul>
-      </li>
-      <li class="hidden-desktop hidden-phone visible-tablet" id="more-widgets" style="display:" > <a href="javascript:;"> <i class="icon-ellipsis-horizontal"></i></a> 
-        <ul class="sub-menu">
-          <div class="side-bar-widgets">
-            <p class="menu-title">FOLDER <span class="pull-right"><a href="#" class="create-folder"><i class="icon-plus"></i></a></span></p>
-            <ul class="folders" id="folders">
-              <li><a href="#"><div class="status-icon green"></div> My quick tasks </a> </li>
-              <li><a href="#"><div class="status-icon red"></div> To do list </a> </li>
-              <li><a href="#"><div class="status-icon blue"></div> Projects </a> </li>
-              <li id="folder-input" class="folder-input" style="display:none"><input type="text" placeholder="Name of folder" class="no-boarder folder-name" name="" id="folder-name"></li>
-            </ul>
-            <p class="menu-title">PROJECTS </p>
-            <div class="status-widget">
-              <div class="status-widget-wrapper">
-                <div class="title">Freelancer<a href="#" class="remove-widget"><i class="icon-custom-cross"></i></a></div>
-                <p>Redesign home page</p>
-              </div>
-            </div>
-            <div class="status-widget">
-              <div class="status-widget-wrapper">
-                <div class="title">envato<a href="#" class="remove-widget"><i class="icon-custom-cross"></i></a></div>
-                <p>Statistical report</p>
-              </div>
-            </div>
-          </div>
-        </ul>
-      </li>    
+      <li class="start active "> <a href="index.html"> <i class="icon-custom-home"></i> <span class="title">Dashboard</span> <span class="selected"></span>  <span class="arrow "></span></a> </li>
+      
+      <li class=""> <a href="/about"> <i class="icon-custom-feedbacks"></i> <span class="title">About</span> <span class="arrow "></span> </a> </li>    
+      
     </ul>
-    <div class="side-bar-widgets">
-      <p class="menu-title">FOLDER <span class="pull-right"><a href="#" class="create-folder"><i class="icon-plus"></i></a></span></p>
-      <ul class="folders" id="folders">
-        <li><a href="#"><div class="status-icon green"></div> My quick tasks </a> </li>
-        <li><a href="#"><div class="status-icon red"></div> To do list </a> </li>
-        <li><a href="#"><div class="status-icon blue"></div> Projects </a> </li>
-        <li id="folder-input" class="folder-input" style="display:none"><input type="text" placeholder="Name of folder" class="no-boarder folder-name" name="" id="folder-name"></li>
-      </ul>
-      <p class="menu-title">PROJECTS </p>
-      <div class="status-widget">
-        <div class="status-widget-wrapper">
-          <div class="title">Freelancer<a href="#" class="remove-widget"><i class="icon-custom-cross"></i></a></div>
-          <p>Redesign home page</p>
-        </div>
-      </div>
-      <div class="status-widget">
-        <div class="status-widget-wrapper">
-          <div class="title">envato<a href="#" class="remove-widget"><i class="icon-custom-cross"></i></a></div>
-          <p>Statistical report</p>
-        </div>
-      </div>
-    </div>
-
-    <a href="#" class="scrollup">Scroll</a>
     <div class="clearfix"></div>
     <!-- END SIDEBAR MENU --> 
   </div>
-  <div class="footer-widget">    
-    <div class="progress transparent progress-success progress-small no-radius no-margin">
-      <div data-percentage="79%" class="bar animate-progress-bar" ></div>   
-    </div>
-    <div class="pull-right">
-      <div class="details-status">
-        <span data-animation-duration="560" data-value="86" class="animate-number"></span>
-      </div>  
-      <a href="lockscreen.html"><i class="icon-off"></i></a> </div>
-    </div>
     <!-- END SIDEBAR --> 
     <!-- BEGIN PAGE CONTAINER-->
     <div class="page-content"> 
@@ -283,93 +97,6 @@
           <h3>Dashboard </h3>   
         </div>
         <div id="container">
-          <div class="row-fluid spacing-bottom 2col"> 
-            <div class="span3 ">  
-              <div class="tiles blue added-margin">
-                <div class="tiles-body">
-                  <div class="controller">                
-                    <a href="javascript:;" class="reload"></a>
-                    <a href="javascript:;" class="remove"></a>    
-                  </div>    
-                  <div class="tiles-title">
-                    TODAY’S SERVER LOAD
-                  </div>  
-                  <div class="heading">
-                    <span class="animate-number" data-value="26.8" data-animation-duration="1200">0</span>%
-
-                  </div>
-                  <div class="progress transparent progress-white progress-small no-radius">
-                    <div class="bar animate-progress-bar" data-percentage="26.8%"></div>
-                  </div>          
-                  <div class="description"><i class="icon-custom-up"></i><span class="text-white mini-description ">&nbsp; 4% higher <span class="blend">than last month</span></span></div>
-                </div>  
-              </div>
-            </div>
-            <div class="span3 ">
-              <div class="tiles green added-margin">
-               <div class="tiles-body">
-                <div class="controller">                
-                  <a href="javascript:;" class="reload"></a>
-                  <a href="javascript:;" class="remove"></a>                  
-                </div>    
-                <div class="tiles-title">
-                  TODAY’S VISITS
-                </div>  
-                <div class="heading">
-                  <span class="animate-number" data-value="2545665" data-animation-duration="1000">0</span> 
-                </div>
-                <div class="progress transparent progress-white progress-small no-radius">
-                  <div class="bar animate-progress-bar" data-percentage="79%" ></div>
-                </div>        
-                <div class="description"><i class="icon-custom-up"></i><span class="text-white mini-description ">&nbsp; 2% higher <span class="blend">than last month</span></span></div>  
-              </div>
-            </div>
-          </div>
-          <div class="span3 ">
-            <div class="tiles red added-margin">
-              <div class="tiles-body">
-                <div class="controller">                
-                  <a href="javascript:;" class="reload"></a>
-                  <a href="javascript:;" class="remove"></a>                    
-                </div>  
-                <div class="tiles-title">
-                  TODAY’S SALES
-                </div>  
-                <div class="heading">
-                  $ <span class="animate-number" data-value="14500" data-animation-duration="1200">0</span> 
-                </div>
-                <div class="progress transparent progress-white progress-small no-radius">
-                  <div class="bar animate-progress-bar" data-percentage="45%" ></div>
-                </div>
-                <div class="description"><i class="icon-custom-up"></i><span class="text-white mini-description ">&nbsp; 5% higher <span class="blend">than last month</span></span></div>  
-              </div>
-            </div>
-
-          </div> 
-          <div class="span3">
-            <div class="tiles purple added-margin">
-              <div class="tiles-body">
-                <div class="controller">                
-                  <a href="javascript:;" class="reload"></a>
-                  <a href="javascript:;" class="remove"></a>                  
-                </div>    
-                <div class="tiles-title">
-                  TODAY’S FEEDBACKS
-                </div>  
-                <div class="row-fluid">
-                  <div class="heading">
-                    <span class="animate-number" data-value="1600" data-animation-duration="700">0</span> 
-                  </div>
-                  <div class="progress transparent progress-white progress-small no-radius">
-                    <div class="bar animate-progress-bar" data-percentage="12%"></div>
-                  </div>
-                </div>
-                <div class="description"><i class="icon-custom-up"></i><span class="text-white mini-description ">&nbsp; 3% higher <span class="blend">than last month</span></span></div>
-
-              </div>
-            </div>
-          </div>      
-        </div>  
         <div class="row-fluid spacing-bottom">    
           <div class="span8">
             <div class="row-fluid spacing-bottom">
@@ -379,74 +106,134 @@
                     <div class="tile-more-content span4">
                       <div class="tiles green">
                        <div class="tiles-body">
-                        <div class="heading">
-                          Statistical 
-                        </div>  
-                        <p>Status : live</p>          
+                        <div class="heading">Wallet</div>  
                       </div>
                       <div class="tile-footer">
-                        <div class="iconplaceholder"><i class="icon-map-marker"></i></div>258 Countries, 4835 Cities
+                        <span>Total: </span><strong>$<span class="balance-total"><%=  number_with_precision current_user.wallet.balance, precision: 2 %></span></strong>
                       </div>
                     </div>
-                    <div class="tiles-body" >
+                    <div class="tiles-body  wallet-list" >
                       <ul class="progress-list" >
                         <li>
                           <div class="details-wrapper">
-                            <div class="name">Foreign Visits</div>
-                            <div class="description">Our Overseas visits</div>
+                            <div class="name">US Dollar</div>
+                            <div class="description">Balance</div>
                           </div>
                           <div class="details-status pull-right">
-                            <span class="animate-number" data-value="89" data-animation-duration="800">0</span>%
+                            <strong><span class="animate-number balance-usd" data-value="<%= current_user.wallet.usd_balance %>" data-animation-duration="200">0</span></strong>
                           </div>
                           <div class="clearfix"></div>
-                          <div class="progress progress-small no-radius progress-success" >
-                            <div class="bar animate-progress-bar" data-percentage="89%" ></div>
-                          </div>
+                          <br><br>
                         </li>
                         <li>
                           <div class="details-wrapper">
-                            <div class="name">Local Visits</div>
-                            <div class="description">Our Overseas visits</div>
+                            <div class="name">BitCoin</div>
+                            <div class="description">Balance</div>
                           </div>
                           <div class="details-status pull-right">
-                           <span class="animate-number" data-value="45" data-animation-duration="600">0</span>%
-                         </div>
-                         <div class="clearfix"></div>
-                         <div class="progress progress-small no-radius progress-warning">
-                          <div class="bar animate-progress-bar" data-percentage="45%" ></div>
-                        </div>
-                      </li>
+                            <strong><span class="animate-number balance-btc" data-value="<%= current_user.wallet.btc_balance %>" data-animation-duration="200">0</span></strong>
+                          </div>
+                          <div class="clearfix"></div>
+                          <br><br>
+                        </li>
                       <li>
                         <div class="details-wrapper">
-                          <div class="name">Other Visits</div>
-                          <div class="description">Our Overseas visits</div>
+                          <div class="name">LiteCoin</div>
+                          <div class="description">Balance</div>
                         </div>
                         <div class="details-status pull-right">
-                          <span class="animate-number" data-value="12" data-animation-duration="200">0</span>%
+                          <strong><span class="animate-number balance-ltc" data-value="<%= current_user.wallet.ltc_balance %>" data-animation-duration="200">0</span></strong>
                         </div>
                         <div class="clearfix"></div>
-                        <div class="progress progress-small no-radius progress-danger">
-                          <div class="bar animate-progress-bar" data-percentage="12%" ></div>
+                        <br><br>
+                      </li>        
+                      <li>
+                        <div class="details-wrapper">
+                          <div class="name">NameCoin</div>
+                          <div class="description">Balance</div>
                         </div>
-                      </li>         
+                        <div class="details-status pull-right">
+                          <strong><span class="animate-number balance-nmc" data-value="<%= current_user.wallet.nmc_balance %>" data-animation-duration="200">0</span></strong>
+                        </div>
+                        <br><br>
+                        <div class="clearfix"></div>
+                      </li>        
                     </ul>
 
                   </div>
                 </div>
                 <div class="tiles white span8">
-                  <div class="tiles-chart"> 
-                    <div class="controller">                
-                      <a href="javascript:;" class="reload"></a>
-                      <a href="javascript:;" class="remove"></a>                  
-                    </div>                  
-                    <div class="tiles-body">                  
-                      <div class="tiles-title">GEO-LOCATIONS</div>
-                      <div class="heading">
-                        8,545,654 <i class="icon-map-marker"></i>
-                      </div>  
-                    </div>    
-                    <div id="world-map" style="height:405px"></div>                         
-                  </div>            
+                  <!--TRADE-->
+                    <div class="tiles white"> 
+                      <div class="tiles-body white">                  
+                        <div class="heading">New Trade</div>
+
+                        <div>&nbsp;</div>
+
+                        <div class="control-group">
+                          <label class="control-label span3">Buy</label>
+                          <select id="source" class="input-medium span8 buy-selector">
+                            <option value="">Choose</option>
+                            <option value="USD">US Dollar</option>
+                            <option value="BTC" selected="selected">BitCoin (Default)</option>
+                            <option value="LTC">LiteCoin</option>
+                            <option value="NMC">NameCoin</option>
+                          </select>
+                        </div>
+
+                        <div class="control-group">
+                          <label class="control-label span3">using</label>
+                          <select id="Select1" class="input-medium span8 using-selector">
+                            <option value="">Choose</option>
+                            <option value="USD" selected="selected">US Dollar (Default)</option>
+                            <option value="BTC">BitCoin</option>
+                            <option value="LTC">LiteCoin</option>
+                            <option value="NMC">NameCoin</option>
+                          </select>
+                        </div>
+
+                        <div class="control-group">
+                          <label class="control-label span3">Amount</label>
+                          <div class="controls">
+                            <input type="text" class="input-medium span8 transaction-amount">
+                          </div>
+                        </div>
+
+                        <div class="control-group" style="margin-top: 12px;">
+                          <label class="control-label span3">Subtotal</label>
+                          <div class="controls">
+                            <h4><span class="transaction-subtotal">0.00000</span></h4>
+                          </div>
+                        </div>
+
+                        <div class="control-group fee-group hidden" style="margin-top: 23px;">
+                          <label class="control-label span3">Fee</label>
+                          <div class="controls">
+                            <h4>0.06% or <span class="transaction-charge">0.00000</span></h4>
+                          </div>
+                        </div>
+                        
+                        <div id="order-total" class="control-group" style="margin-top: 23px;">
+                          <label class="control-label span3"><strong>Total</strong></label>
+                          <div class="controls">
+                            <h4><strong></strong><strong class="transaction-total">0.00000</strong></h4>
+                          </div>
+                        </div>
+
+    
+                        <div id="place-order" class="control-group" style="margin-top: 23px;">
+                          <button type="button" class="btn btn-dark btn-cons">
+                            <i class="icon-ok"></i>
+                            Place Order
+                          </button>
+                          <button type="button" class="btn btn-default btn-cons">
+                            <i class="icon-remove"></i>
+                            Cancel
+                          </button>
+                        </div>
+                      </div>    
+                    </div>
+                    <!--TRADE END-->       
                   <div class="clearfix"></div>  
                 </div>   
               </div>
@@ -496,7 +283,7 @@
 
               </div>  
               <br>
-              <div id="ricksaw" ></div>                 
+              <div id="ricksaw" style="display:none;"></div>                 
 
               <div class="clearfix"></div>  
             </div> 
@@ -513,7 +300,7 @@
                   44% higher <span class="blend">than last month</span> 
                 </div>
               </div>            
-              <div id="legend"></div>
+              <div id="legend"  style="display:none;"></div>
               
 
             </div> 
@@ -522,108 +309,69 @@
       </div>
     </div>
   </div>
-  <div class="row-fluid ">      
-    <div class="span8">
-      <div class="tiles white">
-        <div class="tiles-body">
-          <div class="controller">                
-            <a href="javascript:;" class="reload"></a>
-            <a href="javascript:;" class="remove"></a>                  
-          </div>
-          <div class="tiles-title">
-            NOTIFICATIONS
-          </div>              
-        </br>
-        <div class="notification-messages info">
-          <div class="user-profile">
-            <img src="/assets/profiles/c.jpg" data-src="/assets/profiles/c.jpg" data-src-retina="/assets/profiles/c2x.jpg" width="35" height="35">
-          </div>
-          <div class="message-wrapper">
-            <div class="heading">
-              David Nester - Commented on your wall
-            </div>
-            <div class="description">
-              Meeting postponed to tomorrow
-            </div>
-          </div>
-          <div class="date pull-right">
-            Just now
-          </div>
-        </div>
-        <div class="notification-messages danger">
-          <div class="iconholder">
-            <i class="icon-warning-sign"></i>
-          </div>
-          <div class="message-wrapper">
-            <div class="heading">
-              Server load limited
-            </div>
-            <div class="description">
-              Database server has reached its daily capicity
-            </div>
-          </div>
-          <div class="date pull-right">
-            Yesterday
-          </div>
-        </div>  
-        <div class="notification-messages success">
-          <div class="user-profile">
-            <img src="/assets/profiles/h.jpg" data-src="/assets/profiles/h.jpg" data-src-retina="/assets/profiles/h2x.jpg" width="35" height="35">
-          </div>
-          <div class="message-wrapper">
-            <div class="heading">
-              You have've got 150 messages
-            </div>
-            <div class="description">
-              150 newly unread messages in your inbox
-            </div>
-          </div>
-          <div class="date pull-right">
-            Yesterday
-          </div>
-        </div>                
-      </div>
-    </div>          
-  </div>  
-  <div class="span4">
-    <div class="tiles red weather-widget">
-      <div class="tiles-body">
-        <div class="controller">                
-          <a href="javascript:;" class="reload"></a>
-          <a href="javascript:;" class="remove"></a>                  
-        </div>  
-        <div class="tiles-title">
-          TODAY’S WEATHER
-        </div>  
-        <div class="heading">
-          <div class="pull-left">
-            Tuesday
-          </div>
-          <div class="pull-right">
-            55
-          </div>  
-          <div class="clearfix"></div>                  
-        </div>                
-        <div class="big-icon">
-          <canvas id="partly-cloudy-day" width="120"  height="120" ></canvas>                 
-        </div>              
-        <div class="clearfix"></div>
+</div>
+
+
+<div class="span4 currency-snapshot">  
+  <div class="tiles blue added-margin">
+    <div class="tiles-body">
+      <div class="controller">                
+        <a href="javascript:;" class="reload"></a> 
+      </div>    
+      <div class="tiles-title">
+        CURRENT BITCOIN PRICE
       </div>  
-      <div class="tile-footer">
-        <div class="pull-left">
-          <canvas id="wind" width="32" height="32"></canvas>
-          <span class="text-white small-text-description">Windy</span>
-        </div>  
-        <div class="pull-right">
-          <canvas id="rain" width="32" height="32"></canvas>
-          <span class="text-white small-text-description">Humidity</span>
-        </div>  
-        <div class="clearfix"></div>                            
-      </div>              
+      <div class="heading">
+        $<span class="animate-number btc-last" data-value="<%= number_with_precision @btc_currency.last, precision: 2 %>" data-animation-duration="1200">0</span>
+      </div>     
+      <div class="description">
+        H: <strong>$</strong><strong class="btc-high"><%= number_with_precision @btc_currency.high, precision: 2 %></strong> &nbsp;&nbsp;&nbsp; 
+        L: <strong>$</strong><strong class="btc-low"><%= number_with_precision @btc_currency.low, precision: 2 %></strong>  &nbsp;&nbsp;&nbsp; 
+        AVG: <strong>$</strong><strong class="btc-average"><%= number_with_precision @btc_currency.average, precision: 2 %></strong></div>
+    </div>  
+  </div>
+</div>
+
+<div class="span4 currency-snapshot">
+    <div class="tiles green added-margin">
+     <div class="tiles-body">
+      <div class="controller">                
+        <a href="javascript:;" class="reload"></a>               
+      </div>    
+      <div class="tiles-title">
+        CURRENT LITECOIN PRICE
+      </div>  
+      <div class="heading">
+        $<span class="animate-number ltc-last" data-value="<%= number_with_precision @ltc_currency.last, precision: 2 %>" data-animation-duration="1000">0</span> 
+      </div>   
+      <div class="description">
+        HIGH: <strong>$</strong><strong class="ltc-high"><%= number_with_precision @ltc_currency.high, precision: 2 %></strong> &nbsp;&nbsp;&nbsp; 
+        LOW: <strong>$</strong><strong class="ltc-low"><%= number_with_precision @ltc_currency.low, precision: 2 %></strong>  &nbsp;&nbsp;&nbsp; 
+        AVG: <strong>$</strong><strong class="ltc-average"><%= number_with_precision @ltc_currency.average, precision: 2 %></strong></div>
     </div>
   </div>
 </div>
-</div>
+
+<div class="span4 currency-snapshot spacing-bottom">
+  <div class="tiles red added-margin">
+    <div class="tiles-body">
+      <div class="controller">                
+        <a href="javascript:;" class="reload"></a>                 
+      </div>  
+      <div class="tiles-title">
+        CURRENT NAMECOIN PRICE
+      </div>  
+      <div class="heading">
+        $<span class="animate-number nmc-last" data-value="<%= number_with_precision @nmc_currency.last, precision: 2 %>" data-animation-duration="1200">0</span> 
+      </div>
+      <div class="description">
+        HIGH: <strong>$</strong><strong class="nmc-high"><%= number_with_precision @nmc_currency.high, precision: 2 %></strong> &nbsp;&nbsp;&nbsp; 
+        LOW: <strong>$</strong><strong class="nmc-low"><%= number_with_precision @nmc_currency.low, precision: 2 %></strong>  &nbsp;&nbsp;&nbsp; 
+        AVG: <strong>$</strong><strong class="nmc-average"><%= number_with_precision @nmc_currency.average, precision: 2 %></strong></div>
+    </div>
+  </div>
+</div> 
+
 <div class="span4">
   <div class="row-fluid spacing-bottom ">
     <div class="span12">        
@@ -653,113 +401,9 @@
       </div>
     </div> 
   </div>
-  <div class="row-fluid">
-    <div class="span12">        
-      <div class="widget">
-        <div class="widget-title dark">
-          <div class="pull-left ">                  
-            <button class="btn  btn-dark  btn-small" type="button"><i class="icon-plus"></i></button>
-          </div>
-          Todo list
-          <div class="controller">                
-            <a href="javascript:;" class="reload"></a>
-            <a href="javascript:;" class="remove"></a>                  
-          </div>
-        </div>
-        <div class="widget-body">
-
-          <div class="row-fluid">
-            <input type="text" class="span12 dark ">
-          </div>
-          <br>
-          <div class="row-fluid">
-            <div class="checkbox check-success  ">
-              <input type="checkbox" value="1" id="chk_todo01" class="todo-list">
-              <label for="chk_todo01">Send email to David, new signups</label>
-            </div>
-          </div>
-          <div class="row-fluid">
-            <div class="checkbox check-success  ">
-              <input type="checkbox" checked="checked" value="1" id="chk_todo02" class="todo-list">
-              <label for="chk_todo02" class="done">Call Jane!!</label>
-            </div>
-          </div>
-          <div class="row-fluid">
-            <div class="checkbox check-success  ">
-              <input type="checkbox"  value="1" id="chk_todo03" class="todo-list">
-              <label for="chk_todo03">Server upgrades ASAP</label>
-            </div>
-          </div>
-          <div class="row-fluid">
-            <div class="checkbox check-success  ">
-              <input type="checkbox" value="1" id="chk_todo04" class="todo-list">
-              <label for="chk_todo04">Hello, new task</label>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>          
-  </div>  
-
 </div>    
-<div class="span4">   
-  <br>
-  <div class="row-fluid spacing-bottom">
-    <div class="span12 white">
-      <div class="tiles purple added-margin" style="max-height:345px">
-        <div class="tiles-body">
-          <div class="controller">                
-            <a href="javascript:;" class="reload"></a>
-            <a href="javascript:;" class="remove"></a>                  
-          </div>              
-          <h3 class="text-white ">
-            <br><br><br>
-            <span class="semi-bold">Steve Jobs</span> Time Capsule` is 
-            Finally Unearthed on
-            <span class="semi-bold">Skyace News</span>
-            <div class="blog-post-controls-wrapper">
-              <div class="blog-post-control">
-                <a class="text-white" href="#"><i class="icon-heart"></i> 47k</a>
-              </div>
-              <div class="blog-post-control">
-                <a class="text-white" href="#"><i class="icon-comment"></i> 1584</a>
-              </div>
-            </div>            
-          </h3>
-          <br>
-        </div>  
-        
-      </div>  
-      <div class="tiles white added-margin">
-        <div class="tiles-body">  
-         <div class="row-fluid">
-          <div class="user-comment-wrapper span12">
-            <div class="profile-wrapper">
-              <img src="/assets/profiles/d.jpg" data-src="/assets/profiles/d.jpg" data-src-retina="/assets/profiles/d2x.jpg" width="35" height="35">
-            </div>
-            <div class="comment">
-              <div class="user-name">
-                David <span class="semi-bold">Cooper</span>
-              </div>  
-              <div class="preview-wrapper">
-                What's the progress on the new project?
-              </div>
-              <div class="more-details-wrapper">
-                <div class="more-details">
-                  <i class="icon-time"></i> 12 mins ago
-                </div>
-                <div class="more-details">
-                  <i class="icon-map-marker"></i> Near Florida  
-                </div>
-              </div>
-            </div>
-          </div>          
-        </div>            
-      </div>        
-    </div>        
-  </div>      
-</div>
-</div>
+
+
 </div>
 </div> 
 </div>  

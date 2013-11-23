@@ -13,7 +13,7 @@ $(document).ready(function() {
 	loadSampleChart();
 	
 function loadServerChart(){
-	var seriesData = [ [], []];
+	var seriesData = [ [], [], [] ];
 	var random = new Rickshaw.Fixtures.RandomData(50);
 
 	for (var i = 0; i < 50; i++) {
@@ -28,12 +28,16 @@ function loadServerChart(){
 			{
 				data: seriesData[0],
 				color: 'rgba(0,144,217,0.51)',
-				name:'DB Server'
+				name:'Name Coin'
 			},{
-				data: seriesData[1],
-				color: '#eceff1',
-				name:'Web Server'
-			}
+        data: seriesData[1],
+        color: '#eceff1',
+        name:'Lite Coin'
+      },{
+        data: seriesData[2],
+        color: '#6f7b8a',
+        name:'Bit Coin'
+      }
 		]
 	} );
 	var hoverDetail = new Rickshaw.Graph.HoverDetail( {
