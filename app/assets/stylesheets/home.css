@@ -1,0 +1,10 @@
+  .about-main {
+    background: url(/assets/team.jpg) no-repeat top center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  .about-copy {
+    color: white;
+  }
