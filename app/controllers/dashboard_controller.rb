@@ -95,8 +95,6 @@ class DashboardController < ApplicationController
     # Increment the purchased amount now
     wallet[get_wallet_code(buy_code)] += (real_rate * amount) * using_rate + fee
 
-    debugger
-
     wallet.save
 
     # This transaction is done
