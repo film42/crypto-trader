@@ -30,11 +30,12 @@ class User < ActiveRecord::Base
 
 
   after_create do |user|
+    # Should not be hard coded here
     wallet = Wallet.new
     wallet.ltc_balance = 0
     wallet.btc_balance = 0
     wallet.nmc_balance = 0
-    wallet.usd_balance = 1000
+    wallet.usd_balance = 10000
     user.wallet = wallet
 
     wallet.save
