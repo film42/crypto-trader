@@ -87,7 +87,7 @@ class DashboardController < ApplicationController
     # Subtract from wallet's using amount
     wallet[get_wallet_code(using_code)] -= (real_rate * amount)
     # Increment the purchased amount now
-    wallet[get_wallet_code(buy_code)] += (real_rate * amount) * using_rate + fee
+    wallet[get_wallet_code(buy_code)] += ((real_rate * amount) * using_rate - fee) / buy_rate
 
     wallet.save
 
