@@ -36,3 +36,21 @@
 .balance-total {
   font-size: 14px;
 }
+
+.flash-body {
+    background-color: #e5e9ec;
+}
+.flash-message {
+    border-bottom: 25px solid #e5e9ec;
+    color: #ffffff;
+    background-color: #fff;
+}
+.error-flash {
+    background-color: #e74c3c;
+}
+.notice-flash {
+    background-color: #1abc9c;
+}
+.flash-message p {
+    padding: 20px 20px 15px 20px;
+}
