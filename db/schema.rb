@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131123182711) do
+ActiveRecord::Schema.define(:version => 20131127082327) do
 
   create_table "currencies", :force => true do |t|
     t.decimal  "last",           :precision => 20, :scale => 5
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20131123182711) do
     t.datetime "updated_at",                                         :null => false
     t.integer  "user_id"
     t.string   "status"
+    t.decimal  "service_charge",      :precision => 20, :scale => 5
   end
 
   create_table "users", :force => true do |t|

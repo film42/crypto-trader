@@ -57,7 +57,7 @@ class DashboardController < ApplicationController
     puts get_conversion_code(using_code)
     buy_rate = 1 
     if(buy_code != "USD")
-      Currency.where(pair: get_conversion_code(buy_code)).first.last
+      buy_rate = Currency.where(pair: get_conversion_code(buy_code)).first.last
     end
     using_rate = 1 # Assume USD
     if(using_code != "USD")
@@ -68,21 +68,18 @@ class DashboardController < ApplicationController
     amount = BigDecimal.new(params[:transaction][:buy_amount])
 
     # New Exchange Rates
-    puts using_rate
-    puts "****"
     real_rate = (buy_rate / using_rate)
+    fee = real_rate * amount * BigDecimal.new("0.06")
+
 
     # Create Record
     transaction = Transaction.new 
     transaction.buy_amount = amount
     transaction.buy_rate_usd = buy_rate
     transaction.buy_currency_code = buy_code
-
     transaction.using_rate_usd = using_rate
     transaction.using_currency_code = using_code
-
-    fee = real_rate * amount * BigDecimal.new("0.06")
-
+    transaction.service_charge = fee
     transaction.total = ((real_rate * amount) - fee)
     transaction.total_usd = ((real_rate * amount) - fee) * using_rate
 
@@ -96,7 +93,9 @@ class DashboardController < ApplicationController
     # Subtract from wallet's using amount
     wallet[get_wallet_code(using_code)] -= (real_rate * amount)
     # Increment the purchased amount now
-    wallet[get_wallet_code(buy_code)] += (real_rate * amount) * using_rate * BigDecimal.new("0.06")
+    wallet[get_wallet_code(buy_code)] += (real_rate * amount) * using_rate + fee
+
+    debugger
 
     wallet.save
 

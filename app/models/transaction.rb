@@ -5,6 +5,8 @@ class Transaction < ActiveRecord::Base
   attr_accessible :total, :total_usd, :new_balance
   attr_accessible :status
 
+  attr_accessible :service_charge
+
   belongs_to :user
 
 end
