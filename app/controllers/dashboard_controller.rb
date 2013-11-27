@@ -39,22 +39,10 @@ class DashboardController < ApplicationController
   end
 
   def new_transaction 
-
-      #attr_accessible :, :buy_rate_usd, :
-      #attr_accessible :using_rate_usd, :using_currency_code
-      #attr_accessible :total, :total_usd, :new_balance
-      #attr_accessible :status
-
-    # THROW ERROR IF
-      # 1) not all filled out including 0
-      # 2) no funds
-
     # Get Codes
     buy_code = params[:transaction][:buy_currency_code]
     using_code = params[:transaction][:using_currency_code]
     # Get the last rates
-    puts "*******"
-    puts get_conversion_code(using_code)
     buy_rate = 1 
     if(buy_code != "USD")
       buy_rate = Currency.where(pair: get_conversion_code(buy_code)).first.last
@@ -66,11 +54,15 @@ class DashboardController < ApplicationController
 
     # Get Amount to purchase
     amount = BigDecimal.new(params[:transaction][:buy_amount])
+    if amount == 0
+      flash[:error] = "Error, Amount Required"
+      redirect_to dashboard_path
+      return
+    end
 
     # New Exchange Rates
     real_rate = (buy_rate / using_rate)
     fee = real_rate * amount * BigDecimal.new("0.06")
-
 
     # Create Record
     transaction = Transaction.new 
@@ -87,7 +79,9 @@ class DashboardController < ApplicationController
     wallet = current_user.wallet
 
     if wallet[get_wallet_code(using_code)] < real_rate * amount
-      raise Exception.new "Can't do this"
+      flash[:error] = "Error, Insufficient Funds"
+      redirect_to dashboard_path
+      return
     end
 
     # Subtract from wallet's using amount
@@ -105,9 +99,10 @@ class DashboardController < ApplicationController
     transaction.user = current_user
     transaction.save
 
+    flash[:notice] = "Transaction was successful!"
     redirect_to dashboard_path
-
   end
+
 
   private
 

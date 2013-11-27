@@ -51,6 +51,9 @@ $(document).ready ->
   #   LOGIC                                     #
   ###############################################
 
+  # Style = Fade out flash message on dashboard
+  $('.flash-message').fadeOut(5000)
+
   # Return in terms of USD
   getLastForCurrency = (tag) ->
     if tag == 'USD'
