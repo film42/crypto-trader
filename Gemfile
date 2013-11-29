@@ -41,3 +41,5 @@ gem 'debugger'
 
 # Other Goodies
 gem 'btce'
+
+gem 'newrelic_rpm'
