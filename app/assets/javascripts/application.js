@@ -47,4 +47,6 @@
 //= require arch/core.js
 //= require arch/login.js
 
+//= require ga.js
+
 //= require dashboard.js.coffee
